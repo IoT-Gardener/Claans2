@@ -1,7 +1,10 @@
 [package]
 name = "claans2"
 version = "0.1.0"
+authors = ["Alex Billington", "Jake Ratcliffe"]
 edition = "2021"
+description = "A Rust rebuild of the Claans app"
+repository = "https://github.com/IoT-Gardener/Claans2"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
