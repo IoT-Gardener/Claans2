@@ -17,7 +17,9 @@ services:
       - APP_DB_PASS=${APP_DB_PASS}
       - APP_DB_NAME=${APP_DB_NAME}
     volumes:
-      - ./db:/docker-entrypoint-initdb.d/
-      - ./postgres-data:/var/lib/postgresql/data
+      - ./initdb:/docker-entrypoint-initdb.d/
+      - pgdata:/var/lib/postgresql/data
     ports:
       - 5432:5432
+volumes:
+  pgdata:
