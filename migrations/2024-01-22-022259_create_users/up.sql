@@ -1,10 +1,9 @@
 -- Your SQL goes here
 CREATE TABLE IF NOT EXISTS users
 (
-    user_id   INT GENERATED ALWAYS AS IDENTITY,
-    user_name VARCHAR(255) NOT NULL,
-    org_id    INT REFERENCES orgs (org_id) ON DELETE CASCADE,
-    claan_id  INT REFERENCES claans (claan_id) ON DELETE CASCADE,
-    PRIMARY KEY (user_id)
+    user_id   integer PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+    user_name text NOT NULL,
+    org_id    integer REFERENCES orgs (org_id) ON DELETE CASCADE NOT NULL,
+    claan_id  integer REFERENCES claans (claan_id) ON DELETE SET NULL
 );
 CREATE INDEX idx_users_fkeys ON users (claan_id, org_id);

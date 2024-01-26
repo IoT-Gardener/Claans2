@@ -3,27 +3,24 @@
 diesel::table! {
     claans (claan_id) {
         claan_id -> Int4,
-        #[max_length = 255]
-        claan_name -> Varchar,
-        org_id -> Nullable<Int4>,
+        claan_name -> Text,
+        org_id -> Int4,
     }
 }
 
 diesel::table! {
     orgs (org_id) {
         org_id -> Int4,
-        #[max_length = 255]
-        org_name -> Varchar,
+        org_name -> Text,
     }
 }
 
 diesel::table! {
     users (user_id) {
         user_id -> Int4,
-        #[max_length = 255]
-        user_name -> Varchar,
-        org_id -> Nullable<Int4>,
-        claan_id -> Nullable<Int4>,
+        user_name -> Text,
+        org_id -> Int4,
+        claan_id -> Int4,
     }
 }
 
