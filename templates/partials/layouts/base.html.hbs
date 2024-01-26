@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>
+        {{#if title}}
+            {{title}}
+        {{else}}
+            Claans 2
+        {{/if}}
+    </title>
+</head>
+<body>
+    <header>
+    {{#> header-block}}
+        {{> partials/includes/nav}}
+    {{/header-block}}
+    </header>
+
+    {{~> page}}
+
+    <footer>
+        {{#> footer-block}}
+            {{> partials/includes/footer}}
+        {{/footer-block}}
+    </footer>
+</body>
+</html>

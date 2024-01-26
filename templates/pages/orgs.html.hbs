@@ -1,0 +1,27 @@
+{{#*inline "page"}}
+<section id="hello">
+    <h1>Orgs</h1>
+    <p>Total orgs: {{ org_count }}</p>
+    <ul>
+        {{#each orgs}}
+            <li>Id: {{ this.org_id }}</li>
+            <li>Name: {{ this.org_name }}</li>
+        {{else}}
+            <p> No orgs yet</p>
+        {{/each}}
+    </ul>
+    <form action="/orgs" method="post" enctype="multipart/form-data">
+        <fieldset>
+            <legend>Create a new organisation</legend>
+            <div class="row">
+                <div class="col">
+                    {{> partials/utilities/input label="Organisation Name" type="text" name="org_name" }}
+                </div>
+            </div>
+        </fieldset>
+        <br />
+        <input type="submit" value="Submit" class="is-full-width" />
+    </form>
+</section>
+{{/inline}}
+{{> partials/layouts/base }}
