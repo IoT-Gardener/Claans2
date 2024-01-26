@@ -12,6 +12,7 @@ dotenvy = "0.15.7"
 serde = "1.0.195"
 
 [dependencies.rocket_dyn_templates]
+version = "0.1.0"
 features = ["handlebars"]
 
 [dependencies.rocket_contrib]
