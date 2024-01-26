@@ -6,4 +6,15 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-rocket = "0.5.0"
+rocket = { version = "0.5.0", features = ["json"] }
+diesel = { version = "2.1.4", features = ["postgres", "r2d2"] }
+dotenvy = "0.15.7"
+serde = "1.0.195"
+
+[dependencies.rocket_dyn_templates]
+features = ["handlebars"]
+
+[dependencies.rocket_contrib]
+version = "0.4.10"
+default-features = false
+features = ["json"]
