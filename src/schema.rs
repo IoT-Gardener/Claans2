@@ -28,8 +28,4 @@ diesel::joinable!(claans -> orgs (org_id));
 diesel::joinable!(users -> claans (claan_id));
 diesel::joinable!(users -> orgs (org_id));
 
-diesel::allow_tables_to_appear_in_same_query!(
-    claans,
-    orgs,
-    users,
-);
+diesel::allow_tables_to_appear_in_same_query!(claans, orgs, users,);
