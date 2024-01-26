@@ -5,6 +5,7 @@ use rocket_dyn_templates::{context, Template};
 pub mod models;
 pub mod schema;
 mod services;
+use services::*;
 
 #[get("/")]
 fn index() -> Template {
@@ -15,8 +16,8 @@ fn index() -> Template {
 fn rocket() -> _ {
     rocket::build()
         .mount("/", routes![index])
-        .mount("/", routes![services::create_org_json])
-        .mount("/", routes![services::create_org_form])
-        .mount("/", routes![services::list_orgs])
+        .mount("/", routes![create_org_json])
+        .mount("/", routes![create_org_form])
+        .mount("/", routes![list_orgs])
         .attach(Template::fairing())
 }

@@ -1,7 +1,7 @@
 extern crate diesel;
 extern crate rocket;
 
-use crate::models;
+use crate::models::Org;
 use crate::schema;
 use diesel::pg::PgConnection;
 use diesel::prelude::*;
@@ -11,7 +11,6 @@ use rocket::serde::{json::Json, Deserialize, Serialize};
 use rocket::{get, post, FromForm, form::Form};
 use rocket_dyn_templates::{context, Template};
 use std::env;
-use crate::models::Org;
 
 type Result<T, E = Debug<diesel::result::Error>> = std::result::Result<T, E>;
 
@@ -61,7 +60,7 @@ pub fn create_org_json(org: Json<NewOrg>) -> Result<Created<Json<NewOrg>>> {
 #[post("/orgs", format = "multipart/form-data", data = "<org>")]
 pub fn create_org_form(org: Form<NewOrg>) -> Template {
     use self::schema::orgs::dsl::*;
-    use self::models::Org;
+    use self::Org;
 
     let connection = &mut establish_connection_pg();
 
@@ -74,7 +73,7 @@ pub fn create_org_form(org: Form<NewOrg>) -> Template {
         .execute(connection)
         .expect("Error creating new org.");
 
-    let results = self::schema::orgs::dsl::orgs
+    let results = orgs
         .load::<Org>(connection)
         .expect("Error loading orgs.");
     Template::render("pages/orgs", context! {orgs: &results, org_count: results.len()})
@@ -82,9 +81,9 @@ pub fn create_org_form(org: Form<NewOrg>) -> Template {
 
 #[get("/orgs")]
 pub fn list_orgs() -> Template {
-    use self::models::Org;
+    use self::Org;
     let connection = &mut establish_connection_pg();
-    let results = self::schema::orgs::dsl::orgs
+    let results = schema::orgs::dsl::orgs
         .load::<Org>(connection)
         .expect("Error loading orgs.");
     Template::render("pages/orgs", context! {orgs: &results, org_count: results.len()})
