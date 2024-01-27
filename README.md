@@ -55,6 +55,8 @@ docker compose up
 Next, using Cargo, install the diesel cli tool, which will manage the database tables.
 
 ```Shell
+# diesel depends on the libpq package for postgres support
+apt-get install libpq-dev
 cargo install diesel_cli --no-default-features --features postgres
 diesel setup
 ```
@@ -64,8 +66,3 @@ Finally, start the project
 ```Shell
 cargo run
 ```
-
-### Troubleshooting Build
-
-If you get a 'linking with \`cc\` failed' error, you might be missing the libpq-dev package.
-This package can be installed using `apt-get install libpq-dev`.
