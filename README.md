@@ -19,7 +19,7 @@ Claans2 lets you create Claans that you can assign Users to, to facilitate team-
 
 ## How to Build Locally
 
-To build this project locally, you'll need [Git](https://git-scm.com/), [Docker](https://www.docker.com/) (including compose), and [Rust](https://www.rust-lang.org/).
+To build this project locally, you'll need [Git](https://git-scm.com/), [Docker](https://www.docker.com/) (including compose), and [Rust](https://www.rust-lang.org/) (via rustup).
 
 Clone and enter the repository
 
