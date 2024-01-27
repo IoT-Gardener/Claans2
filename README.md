@@ -55,7 +55,7 @@ docker compose up
 Next, using Cargo, install the diesel cli tool, which will manage the database tables.
 
 ```Shell
-cargo install diesel-cli --no-default-features --features postgres
+cargo install diesel_cli --no-default-features --features postgres
 diesel setup
 ```
 
