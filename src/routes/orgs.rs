@@ -1,4 +1,5 @@
 use rocket::form::Form;
+use rocket::response::Redirect;
 use rocket_dyn_templates::{context, Template};
 
 use crate::models::*;
@@ -12,20 +13,15 @@ pub fn get_orgs() -> Template {
 }
 
 #[post("/orgs", format = "multipart/form-data", data = "<org>")]
-pub fn create_org(org: Form<NewOrg>) -> Template {
+pub fn create_org(org: Form<NewOrg>) -> Redirect {
     // TODO Implement proper logging for failed writes
     // Only error handling currently is to render to user
     match services::db::create_org(org.into_inner()) {
         // TODO Rendering new org is wonky
         // reimplement with proper formatting for showing creation confirmation
         // maybe using {{#if new_org}} in the template and passing optionally?
-        Ok(new_org) => Template::render("pages/orgs", context! {orgs: vec![&new_org]}),
-        Err(_) => Template::render(
-            "pages/generic_error",
-            context! {
-                error_message: String::from("Error creating new org! Please report to a site admin.")
-            },
-        ),
+        Ok(()) => Redirect::to(uri!(get_orgs)),
+        Err(_) => panic!("Unable to write org"),
     }
 }
 

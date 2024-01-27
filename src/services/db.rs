@@ -25,10 +25,10 @@ pub fn get_orgs() -> Vec<Org> {
     results
 }
 
-pub fn create_org(org: NewOrg) -> Result<NewOrg> {
+pub fn create_org(org: NewOrg) -> Result<()> {
     use self::schema::orgs::dsl::*;
 
     let connection = &mut establish_connection_pg();
     diesel::insert_into(orgs).values(&org).execute(connection)?;
-    Ok(org)
+    Ok(())
 }
