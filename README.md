@@ -64,3 +64,8 @@ Finally, start the project
 ```Shell
 cargo run
 ```
+
+### Troubleshooting Build
+
+If you get a 'linking with \`cc\` failed' error, you might be missing the libpq-dev package.
+This package can be installed using `apt-get install libpq-dev`.
