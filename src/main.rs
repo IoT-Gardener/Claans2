@@ -1,23 +1,18 @@
+#[macro_use]
 extern crate rocket;
 
-use rocket::{launch, routes, get};
-use rocket_dyn_templates::{context, Template};
+use rocket_dyn_templates::Template;
+
 pub mod models;
+mod routes;
 pub mod schema;
 mod services;
-use services::*;
-
-#[get("/")]
-fn index() -> Template {
-    Template::render("pages/index", context! {})
-}
 
 #[launch]
 fn rocket() -> _ {
     rocket::build()
-        .mount("/", routes![index])
-        .mount("/", routes![create_org_json])
-        .mount("/", routes![create_org_form])
-        .mount("/", routes![list_orgs])
+        .mount("/", routes![routes::index])
+        .mount("/", routes![routes::orgs::get_orgs])
+        .mount("/", routes![routes::orgs::create_org])
         .attach(Template::fairing())
 }

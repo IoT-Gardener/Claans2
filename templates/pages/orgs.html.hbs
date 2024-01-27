@@ -1,11 +1,9 @@
 {{#*inline "page"}}
 <section id="hello">
     <h1>Orgs</h1>
-    <p>Total orgs: {{ org_count }}</p>
     <ul>
         {{#each orgs}}
-            <li>Id: {{ this.org_id }}</li>
-            <li>Name: {{ this.org_name }}</li>
+            <li>({{ this.org_id }}): {{ this.org_name}} </li>
         {{else}}
             <p> No orgs yet</p>
         {{/each}}
