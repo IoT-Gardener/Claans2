@@ -194,6 +194,7 @@ version = "0.1.0"
 dependencies = [
  "diesel",
  "dotenvy",
+ "log 0.4.20",
  "rocket 0.5.0",
  "rocket_contrib",
  "rocket_dyn_templates",
