@@ -11,7 +11,7 @@ mod services;
 #[launch]
 fn rocket() -> _ {
     rocket::build()
-        .mount("/", routes![routes::index])
+        .mount("/", routes![routes::index::index])
         .mount("/", routes![routes::orgs::get_orgs])
         .mount("/", routes![routes::orgs::create_org])
         .attach(Template::fairing())
